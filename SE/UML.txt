@@ -1,0 +1,43 @@
+This represents the main entities and their relationships in the Mental Health Care Patient Management System. 
+
++-------------------------+        +------------------+
+|   <<interface>> User    |        |  <<interface>>    |
+|      +login()           |        |   Appointment     |
+|      +logout()          |        +------------------+
+|                         |
++-----------^-------------+        +------------------+
+            |implements              |    Appointment   |
++-----------+-------------+        +------------------+
+|   <<abstract>> Person   |<>------|  - date: Date     |
+|  - name: String         |        |  - time: Time     |
+|  - dateOfBirth: Date    |        |  - duration: int  |
+|  - address: String      |        |  - patient: Patient|
+|  - phoneNumber: String  |        +------------------+
+|  - email: String        | 
+|  - insuranceInfo: String|        +------------------+
+|  +getters and setters   |        |    Medication    |
++-------------------------+------->+------------------+
+                                    |  - name: String   |
++-------------------------+        |  - dosage: String |
+|         Patient         |        |  - sideEffects: String |
++-------------------------+        +------------------+
+|  - medicalHistory: String| 
+|  - diagnosis: String     |        +------------------+
+|  - treatmentPlan: String |        |  <<interface>>    |
+|  - medications: List<Med|        | MedicationReport |
+|  - appointments: List<App|        +------------------+
+|  +getters and setters   |<>------|  - medication: Medication|
++-------------------------+        |  - patient: Patient|
+                                    |  - date: Date     |
++-------------------------+        +------------------+
+|    <<interface>> Admin  |
+|   +addUser()            |        
+|   +deleteUser()         |        
+|                         |        
++-------------------------+        
+
+
+In this diagram, we have three main entities: User, Person, and Patient. The User interface has methods for login and logout, which will be implemented by the Admin class. The Person abstract class represents the common attributes for all people, including name, date of birth, address, phone number, email, and insurance information. The Patient class extends the Person class and includes additional attributes such as medical history, diagnosis, treatment plan, medications, and appointments.
+Additionally, we have two interfaces: Appointment and MedicationReport. The Appointment interface includes methods for scheduling, modifying, and canceling patient appointments. The MedicationReport interface includes methods for generating reports on patient medication information.
+Lastly, we have the Medication class, which represents patient medication information, including the name, dosage, and side effects. This class is associated with the MedicationReport interface, which generates reports on medication information.
+This UML diagram represents the key entities, their relationships, and their attributes and methods as specified in the SRS document. It can serve as a starting point for the development team to begin implementing the system.
